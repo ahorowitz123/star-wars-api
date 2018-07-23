@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { Table } from "react-bootstrap";
+import moment from "moment";
 
 const MovieList = props =>
   <Table responsive>
@@ -12,13 +13,14 @@ const MovieList = props =>
     </thead>
     <tbody>
       {props.movies.map((movie, index) => {
+        const thisDate = moment(movie.release_date, "YYYY-MM-DD")
         return (
           <tr key={index}>
             <td>
               {movie.title}
             </td>
             <td>
-              {movie.release_date}
+              {thisDate.format("dddd, MMMM D YYYY")}
             </td>
           </tr>
         );
