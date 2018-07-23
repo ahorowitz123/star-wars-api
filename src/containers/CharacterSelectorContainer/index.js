@@ -9,11 +9,11 @@ const mapDispatchToProps = dispatch => ({
     if (url === "") {
       dispatch(ActionCreators.replaceMovies([]));
     } else {
-      fetch(url).then(response =>
-        response.json().then(async charData => {
-          if (charData.films === undefined) {
-            dispatch(ActionCreators.replaceMovies([]));
-          } else {
+      fetch(url).then(response => {
+        if (response.status !== 200) {
+          dispatch(ActionCreators.replaceMovies([]));
+        } else {
+          response.json().then(async charData => {
             try {
               const filmData = await Promise.all(
                 charData.films.map(filmURL =>
@@ -28,9 +28,9 @@ const mapDispatchToProps = dispatch => ({
 
               throw error;
             }
-          }
-        })
-      );
+          });
+        }
+      });
     }
   }
 });
