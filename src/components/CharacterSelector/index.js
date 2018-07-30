@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { DropdownButton, MenuItem } from "react-bootstrap";
 
-
+// Presentational Componant to choose which character to select
 const CharacterSelector = (props) => {
   const {characters, handleOnSelect} = props;
   return (
@@ -24,7 +24,9 @@ const CharacterSelector = (props) => {
 }
 
 CharacterSelector.propTypes = {
+  // array of characters
   characters: PropTypes.array.isRequired,
+  // function to execute on character select
   handleOnSelect: PropTypes.func.isRequired,
 }
 

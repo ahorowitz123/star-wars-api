@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { Table } from "react-bootstrap";
 import moment from "moment";
 
+// Presentational component to display the list of movies for the selected character
 const MovieList = props =>
   <Table responsive>
     <thead>
