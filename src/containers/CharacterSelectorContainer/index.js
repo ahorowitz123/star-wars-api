@@ -24,6 +24,7 @@ const mapDispatchToProps = dispatch => ({
           // to complete before calling replace movie action.
           response.json().then(async charData => {
             try {
+              // wiat for all to complete
               const filmData = await Promise.all(
                 charData.films.map(filmURL =>
                   fetch(filmURL).then(film => film.json())
